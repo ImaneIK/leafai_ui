@@ -52,7 +52,7 @@ function App() {
           
           {/* dropzone */}
           <div className='w-full lg:w-1/3 xl:w-1/2 md:mx-8 '>
-            <ImageUpload class="dropzone" />
+            <ImageUpload className="dropzone" />
           </div>
         </div>
 
