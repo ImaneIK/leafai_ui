@@ -65,13 +65,13 @@ export const ImageUpload = () => {
   };
 
   if (data) {
-    confidence = (parseFloat(data.confidence) * 100).toFixed(2);
+    confidence = (parseFloat(data.confidence)).toFixed(2);
   }
 
   return (
       <div className="text-[3vh] flex flex-col items-center justify-center xl:mx-[5vh] py-[1vh] md:py-[5vh] ">
        
-        <div className=" flex flex-col gap-2 2xl:gap-[1vh] justify-center shadow-lg rounded-lg p-[2vh] w-full h-full md:h-[70vh] bg-gray-200 bg-opacity-10 bg-blur-xl rounded-2xl ">
+        <div className=" flex flex-col gap-2 2xl:gap-[1vh] justify-center shadow-lg rounded-lg p-[2vh] w-full h-full md:h-[70vh] bg-transparent bg-opacity-10 bg-blur-xl rounded-2xl ">
           {image && (
             <div className="overflow-hidden rounded-lg ">
               <img
@@ -82,7 +82,7 @@ export const ImageUpload = () => {
             </div>
           )}
           {!image && (
-            <div className="flex justify-center items-center p-6 text-center bg-gray-50 border-dashed border-4 border-gray-300 rounded-lg h-full">
+            <div className="flex justify-center items-center p-6 text-center bg-gray-200 bg-opacity-10 border-dashed border-4 border-gray-300 rounded-lg h-full">
               <input
                 type="file"
                 accept="image/*"
@@ -92,7 +92,7 @@ export const ImageUpload = () => {
               />
               <label
                 htmlFor="file-upload"
-                className="block cursor-pointer text-blue-600 hover:text-blue-800"
+                className="flex items-center h-full w-full cursor-pointer text-white hover:text-gray-500"
               >
                 Choose an image of a potato plant leaf to process
               </label>
