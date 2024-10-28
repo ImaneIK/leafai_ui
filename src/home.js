@@ -8,6 +8,9 @@ export const ImageUpload = () => {
   const [data, setData] = useState();
   const [image, setImage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const url = process.env.REACT_APP_API_URL;
+  // const url = 'https://corsproxy.io/?' + encodeURIComponent(targetUrl);
+
 
   let confidence = 0;
 
@@ -36,11 +39,17 @@ export const ImageUpload = () => {
       if (image) {
         let formData = new FormData();
         formData.append("file", selectedFile);
-        let res = await axios({
-          method: "post",
-          url: process.env.REACT_APP_API_URL,
-          data: formData,
-        });
+
+        let res = await axios.post(
+          url, 
+          formData, 
+          {
+            headers: {
+              'Accept': 'application/json',
+          },
+          }
+        );
+        
         if (res.status === 200) {
           setData(res.data);
           console.log(res.data);
@@ -50,7 +59,7 @@ export const ImageUpload = () => {
     };
 
     sendFile();
-  }, [image, preview, selectedFile]);
+  }, [image,url, preview, selectedFile]);
 
   const onSelectFile = (files) => {
     if (!files || files.length === 0) {
